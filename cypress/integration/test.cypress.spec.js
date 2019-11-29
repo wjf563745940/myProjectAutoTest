@@ -42,4 +42,14 @@ describe('测试', () => {
         cy.get('button').contains('add').click()
         cy.get('ul li').should('have.length',5);
       });
+      it('focus will add one', () => {
+        cy.get('.test').focus()
+        cy.get('ul li').should('have.length',6);
+      });
+      it('input send', () => {
+        cy.get('.test').focus().type('123456')
+        cy.get('button').contains('send').click()
+        cy.get('ul li').should('have.length',8);
+        cy.get('ul li').contains('123456')
+      });
 })
